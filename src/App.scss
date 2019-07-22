@@ -44,23 +44,14 @@ $screen-xl-min: 1200px; // Large tablets and desktops
   padding-top:10px;
    @include xs{
     font-size: 10px;
-    padding-bottom:  4%;
+    padding-bottom:  18%;
   }
   @include md{
     font-size: 18px;
     padding-bottom:  9%;
   }
 }
-// .devider{
-//   padding-top: 50px;
-//   @include xs{
-//     padding-top: 80px;
-//   }
-//   @include md{
-//     padding-top: 50px;
-//   }
- 
-// }
+
 //------------ Rocket-list ---------- 
 .List-container{
   margin:auto;
@@ -140,9 +131,13 @@ $screen-xl-min: 1200px; // Large tablets and desktops
     }
    
      @include xs{ // 300px window width and more
-      right:30%;
-      bottom:4%;
-      top:10%;
+      transform: scale(0.8);
+      right:25%;
+      top:-20%;
+      &:hover {
+      @include transition(.2s);
+      transform: scale(1)
+    }
     }
     @include md{ // 300px window width and more
       right:58%;
@@ -162,7 +157,9 @@ $screen-xl-min: 1200px; // Large tablets and desktops
     color:rgba(255,255,255, 0.1);
     margin-top: 5%;
     background: rgba(40,40,40,0.1);
-   
+   @include xs{
+     margin-top: 3%;
+   }
   }
   .Reuse-container{
     padding-top:1% ; 
