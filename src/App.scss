@@ -1,0 +1,245 @@
+$screen-xs-min: 300px;  // Tiny phones
+$screen-sm-min: 500px;  // Small tablets and large smartphones (landscape view)
+$screen-md-min: 768px;  // Small tablets (portrait view)
+$screen-lg-min: 992px;  // Tablets and small desktops
+$screen-xl-min: 1200px; // Large tablets and desktops
+// Mixins
+@mixin xs { @media (min-width: #{$screen-xs-min}) {@content;} } // Tiny devices
+@mixin sm { @media (min-width: #{$screen-sm-min}) {@content;} } // Small devices
+@mixin md { @media (min-width: #{$screen-md-min}) {@content;} } // Medium devices
+@mixin lg { @media (min-width: #{$screen-lg-min}) {@content;} } // Large devices
+@mixin xl { @media (min-width: #{$screen-xl-min}) {@content;} } // Extra large devices
+
+
+
+
+.App {
+  text-align: center;
+  margin:auto;
+  left:20%;
+  right:20%;
+
+  @include xs{ // 300px window width and more
+    left:10%;
+    right:10%;
+  }
+
+}
+/* ------------------- LaunchPad ------------------*/
+.Launch-container{
+    position: relative;
+    background-image: linear-gradient(to bottom,  rgba(218, 235, 253, 0.1) 0%,rgba(191, 218, 243, 0.1) 100%), url('./Assets/background.svg'); 
+    background-size: cover; 
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    max-width: 1400px;
+    width:100%; 
+    margin:auto;
+    padding-bottom: 30%;
+  
+}
+.H1Style{
+  color:white; 
+  font-size:15px; 
+  padding-top:10px;
+}
+.devider{
+  
+  @include xs{
+    padding-top: 80px;
+  }
+  @include md{
+    padding-top: 50px;
+  }
+ 
+}
+//------------ Rocket-list ---------- 
+.List-container{
+  margin:auto;
+  left:50%;
+  top:10%;
+}
+
+.list-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color:rgba(255,255,255, 0.6);
+  border-color: white;
+  border-radius: 5px;
+  margin-left: 10%;
+  margin-right:10%;
+  padding:0.2%;
+  font-size: 1em;
+
+  @include xs {
+    padding:0.3%;
+    font-size: 0.5em;
+  }
+   @include md {
+    padding:0.3%;
+    font-size: 0.5em;
+  }
+}
+
+
+
+/* ------------------ HEADER -------------------- */
+@mixin transition($duration) {
+    -webkit-transition: $duration;
+    -moz-transition: $duration;
+    -ms-transition: $duration;
+    -o-transition: $duration;
+    transition: $duration;
+}
+.Top-header{
+  margin:auto; 
+  display:flex; 
+  flex-direction:row; 
+  position: fixed;
+  width:80%; 
+  height:10vh;
+  left:10%;
+  align-content: space-between;
+  justify-content: flex-end; 
+  padding-right:1%;
+  border:2px; 
+  border-style:solid;
+  border-color:white; 
+  border-radius:5px; 
+  border-width:thin;
+  opacity:50%;
+  padding-bottom:1%;
+  color:white;
+   @include xs{ // 300px window width and more
+      height:5vh;
+      right:10%;
+      bottom:80%;
+      top:1px;
+    }
+     @include md{ // 300px window width and more
+      height:10vh;
+      right:10%;
+      bottom:80%;
+      top:20px;
+    }
+  .Refresh{ 
+    &:hover {
+      @include transition(.2s);
+      transform: scale(1.2)
+    }
+   
+     @include xs{ // 300px window width and more
+      right:30%;
+      bottom:4%;
+      top:10%;
+    }
+    @include md{ // 300px window width and more
+      right:57%;
+      top:0.5%
+    }
+  }
+  
+  .Land-success-container{
+    padding-top:1% ; 
+    display : flex ; 
+    flex-direction: row ; 
+    justify-content: space-between ;
+    margin-right: 2%;
+  }
+  .Land-success{
+    transform: scale(0.5);
+    color:rgba(255,255,255, 0.1);
+    margin-top: 5%;
+    background: rgba(40,40,40,0.1);
+   
+  }
+  .Reuse-container{
+    padding-top:1% ; 
+    display : flex ; 
+    flex-direction: row ; 
+    justify-content: space-between;
+    margin-right: 2%;
+  }
+   
+  .Reused{
+   transform: scale(0.5);
+    color:white;
+    margin-top: 5%;
+  }
+  .With-reddit-container{
+    justify-self: end;
+    padding-top:1% ; 
+    display : flex ; 
+    flex-direction: row ; 
+    justify-content: space-between ;
+    margin-right: 2%;
+  }
+  .With-reddit{
+    transform: scale(0.5);
+    color:white;
+    margin-top: 5%;
+  }
+   label{
+      color:white;
+      @include xs { // 300px window width and more
+      font-size:0.4em;
+      }
+       @include md { // 300px window width and more
+        font-size:0.5em;
+      }
+
+    }
+}
+
+.List-title {
+  display: flex;
+  flex-direction: row;
+  position:fixed;
+  background-color:white;
+  justify-content: space-evenly;
+  width: 80%;
+  height:5vh;
+  margin:auto;
+  top:18%;
+  left:10%;
+  opacity: 50%;
+  font-size: 10px;
+  @include xs { // 300px window width and more
+      font-size:  6px;
+      top:12%;
+      height:3vh;
+      
+  }
+  @include md { // 300px window width and more
+      font-size:  8px;
+      top:15%;
+      height:4vh;
+      padding-left: 2.3%;
+      
+  }
+}
+
+.Id-article-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width:40.3%;
+    padding-left: 60px;
+    @include xs { // 300px window width and more
+     width:40.3%; 
+  }
+  @include md {
+    justify-content: flex-start;
+     width:30.3%;
+     padding-left: 100px;
+  }
+}
+.Id-header{
+    padding-right:10%;
+    margin-left: 5px;
+     @include md {
+      padding-right:30%;
+      margin-right:10px;
+  }
+}

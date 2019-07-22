@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import getspacex from './Api/getSpaceXLaunches'
+import Update from './Api/getLatestLaunches'
+import './App.scss';
+import { Switch, BrowserRouter, Route } from 'react-router-dom'
+import Launchpad from './Components/Lunchpad'
+class App extends Component  {
+  
+   state = {
+      data: [],
+      landSuccess:[]
+    }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  async componentDidMount(){
+      let res = await getspacex()
+      this.setState({data: res})
+    }
+//get the latest after refreshing
+  getLatest = async () => {
+    let latest = await Update()
+    this.setState({ data: [latest, ...this.state.data,] })
+  
+  }
+
+  render(){
+    // console.log(this.state.data,"<>>>>Recket")
+    return (
+      <div className="App">
+        <BrowserRouter>
+        <Switch>
+            <Route path='/' render= {() => <Launchpad  data = {this.state.data} getLatest={this.getLatest}  /> }/>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
+  }
+
 }
 
 export default App;
