@@ -48,7 +48,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
   }
   @include md{
     font-size: 18px;
-    padding-bottom:  7%;
+    padding-bottom:  9%;
   }
 }
 // .devider{
@@ -138,14 +138,14 @@ $screen-xl-min: 1200px; // Large tablets and desktops
       transform: scale(1.2)
     }
    
-    //  @include xs{ // 300px window width and more
-    //   right:30%;
-    //   bottom:4%;
-    //   top:10%;
-    // }
+     @include xs{ // 300px window width and more
+      right:30%;
+      bottom:4%;
+      top:10%;
+    }
     @include md{ // 300px window width and more
-      right:50%;
-      top:0.5%
+      right:55%;
+      top:1%
     }
   }
   
