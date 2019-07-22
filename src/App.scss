@@ -86,7 +86,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
   }
    @include md {
     padding:0.3%;
-    font-size: 0.5em;
+    font-size: 0.8em;
   }
 }
 
@@ -118,7 +118,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
   border-width:thin;
   opacity:50%;
   padding-bottom:1%;
-  font-size: 18px;
+  font-size: 25px;
   color:white;
    @include xs{ // 300px window width and more
       height:5vh;
@@ -131,6 +131,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
       right:10%;
       bottom:80%;
       top:20px;
+      width:78%;
     }
   .Refresh{ 
     &:hover {
@@ -144,7 +145,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
       top:10%;
     }
     @include md{ // 300px window width and more
-      right:55%;
+      right:58%;
       top:1%
     }
   }
@@ -218,13 +219,17 @@ $screen-xl-min: 1200px; // Large tablets and desktops
       font-size:  6px;
       top:12%;
       height:3vh;
+       padding-top: 0.3%;
       
   }
   @include md { // 300px window width and more
-      font-size:  8px;
-      top:15%;
+      font-size:  12px;
+      top:14%;
       height:4vh;
       padding-left: 2.3%;
+      padding-top: 0.5%;
+      width: 78%;
+      left:11%
       
   }
 }
@@ -246,9 +251,9 @@ $screen-xl-min: 1200px; // Large tablets and desktops
 }
 .Id-header{
     padding-right:10%;
-    margin-left: 5px;
+    margin-left: 80px;
      @include md {
       padding-right:30%;
-      margin-right:10px;
+      margin-right:15px;
   }
 }
