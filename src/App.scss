@@ -42,17 +42,25 @@ $screen-xl-min: 1200px; // Large tablets and desktops
   color:white; 
   font-size:15px; 
   padding-top:10px;
-}
-.devider{
-  
-  @include xs{
-    padding-top: 80px;
+   @include xs{
+    font-size: 10px;
+    padding-bottom:  4%;
   }
   @include md{
-    padding-top: 50px;
+    font-size: 18px;
+    padding-bottom:  5.5%;
   }
- 
 }
+// .devider{
+//   padding-top: 50px;
+//   @include xs{
+//     padding-top: 80px;
+//   }
+//   @include md{
+//     padding-top: 50px;
+//   }
+ 
+// }
 //------------ Rocket-list ---------- 
 .List-container{
   margin:auto;
@@ -110,6 +118,7 @@ $screen-xl-min: 1200px; // Large tablets and desktops
   border-width:thin;
   opacity:50%;
   padding-bottom:1%;
+  font-size: 18px;
   color:white;
    @include xs{ // 300px window width and more
       height:5vh;
@@ -129,13 +138,13 @@ $screen-xl-min: 1200px; // Large tablets and desktops
       transform: scale(1.2)
     }
    
-     @include xs{ // 300px window width and more
-      right:30%;
-      bottom:4%;
-      top:10%;
-    }
+    //  @include xs{ // 300px window width and more
+    //   right:30%;
+    //   bottom:4%;
+    //   top:10%;
+    // }
     @include md{ // 300px window width and more
-      right:57%;
+      right:50%;
       top:0.5%
     }
   }

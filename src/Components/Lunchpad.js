@@ -93,7 +93,7 @@ class launchpad extends Component {
                 reused = {this.reused}
                 withReddit = {this.withReddit}
                 />
-                <div  className= 'devider' >
+                {/* <div  className= 'devider' > */}
                 <List className='Flights-container' >
                     {
                         (this.props.data && this.state.landSuccess === false && this.state.reused === false && this.state.reddit === false)
@@ -103,7 +103,7 @@ class launchpad extends Component {
                         this.state.data.map((flight, idx) => <List.Item key={idx}><RocketList flight={flight} key={idx} /></List.Item>)
                     }
                 </List>
-                </div>
+                {/* </div> */}
             
             </div>
             
