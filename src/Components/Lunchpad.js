@@ -28,11 +28,11 @@ class launchpad extends Component {
             this.props.data.forEach((item) => {
             let cores =item.rocket.first_stage.cores 
                 cores.filter((idx) => {
-                    if (idx.land_success === true){
+                    if (idx.land_success){
                         landed.push(item)
+                        this.setState({ ...this.state.data, data: landed})
                     }
                 }) 
-                this.setState({ data: landed})
                 this.handleLandedSuccessToggle();  
             })
         }
@@ -70,21 +70,18 @@ class launchpad extends Component {
         if (this.props.data) {
             this.props.data.map((item) => {
                 if(item.links && (item.links.reddit_campaign || item.links.reddit_launch || item.links.reddit_recovery || item.links.reddit_media)){
-                            withReddit.push(item)
+                 withReddit.push(item)
                 }
                 this.setState({ data: withReddit})
                 this.handleRedditToggle();  
             })
         }
     }
-    
-
     render(){
-        
         const {data, getLatest } = this.props
         return(
-            <div className='Launch-container'>
-                <h1 className = 'H1Style'>SpaceX Launches</h1>
+            <div className='launch-container'>
+          
                 <Header 
                 data={data}
                 refresh={this.state.refresh}
@@ -93,17 +90,29 @@ class launchpad extends Component {
                 reused = {this.reused}
                 withReddit = {this.withReddit}
                 />
-                {/* <div  className= 'devider' > */}
-                <List className='Flights-container' >
+                
+                <main className='flights-container'>
+                <section className="list-title">
+                <span>Badge</span>
+                <span>Rocket Name</span>
+                <span>Rocket Type</span>
+                <span>Launch Date</span>
+                <span>Details</span>
+                <div className='id-article-container'>
+                    <span className= 'id-header'>ID</span>
+                    <span className='Article-header'> Article</span>
+                </div>
+            </section>
+                <List>
                     {
-                        (this.props.data && this.state.landSuccess === false && this.state.reused === false && this.state.reddit === false)
+                        (this.props.data && !this.state.landSuccess && !this.state.reused && !this.state.reddit )
                         ? 
                         this.props.data.map((flight, idx) => <List.Item key={idx}><RocketList flight={flight} key={idx} /></List.Item>)
                         : 
                         this.state.data.map((flight, idx) => <List.Item key={idx}><RocketList flight={flight} key={idx} /></List.Item>)
                     }
                 </List>
-                {/* </div> */}
+                </main>
             
             </div>
             

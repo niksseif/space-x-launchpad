@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import getspacex from './Api/getSpaceXLaunches'
+import getspaceX from './Api/getSpaceXLaunches'
 import Update from './Api/getLatestLaunches'
 import './App.scss';
 import { Switch, BrowserRouter, Route } from 'react-router-dom'
@@ -12,7 +12,7 @@ class App extends Component  {
     }
 
   async componentDidMount(){
-      let res = await getspacex()
+      let res = await getspaceX()
       this.setState({data: res})
     }
 //get the latest after refreshing

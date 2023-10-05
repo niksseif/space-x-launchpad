@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-
 import {  Image, List, Icon} from 'semantic-ui-react'
-// import { Link } from "react-router-dom";
-// import Shape from '../Assets/link.svg'
 import '../App.scss'
 
 class RocketList extends Component{
-
     state={
         collapse:false,
     }
@@ -20,17 +16,15 @@ class RocketList extends Component{
     renderDetail = (data) =>{
         let collapsed=''
        if (data.length > 10){
-           collapsed = data.substring(0,25)+'...'
-           
-       }
-       
+           collapsed = data.substring(0,25)+'...' 
+       } 
        return collapsed;
     }
 
 render(){
     const {flight } = this.props;
     return (
-        <div className='List-Container'>
+        <div className='list-Container'>
         {(!this.props.flight) ? 'Loading.....':
             <div>
             <List.Item className='list-item' >
