@@ -9,7 +9,6 @@ const Header = ({ landSuccess,
     isLandSuccess,
     isReused,
     isWithReddit})=> {
-    console.log("hello from heather")
     return(
         <header>
             <nav className="top-header" >

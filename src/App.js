@@ -96,6 +96,7 @@ withReddit = () =>{
                 landSuccess={this.landSuccess}
                 reused = {this.reused}
                 withReddit = {this.withReddit}
+                getLatest = {this.getLatest}
                 />
         <Switch>
             <Route path='/' render= {() => <Launchpad  data = {this.state.data} getLatest={this.getLatest}  /> }/>
