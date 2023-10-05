@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import '../style/mixins';
+@import '../style/variables';
 
 .App {
   text-align: center;
@@ -13,7 +13,7 @@
 
 .launch-container {
   position: relative;
-  background-image: linear-gradient(to bottom, rgba(218, 235, 253, 0.1) 0%, rgba(191, 218, 243, 0.1) 100%), url('./Assets/background.svg');
+  background-image: linear-gradient(to bottom, rgba(218, 235, 253, 0.1) 0%, rgba(191, 218, 243, 0.1) 100%), url('../Assets/background.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

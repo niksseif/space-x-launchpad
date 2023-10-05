@@ -3,7 +3,7 @@ import RocketList from './RocketList'
 import { List } from 'semantic-ui-react'
 import Header from './Header'
 
-import '../App.scss'
+import '../style/App.scss'
 class launchpad extends Component {
     constructor(props){
         super(props);

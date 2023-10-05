@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import getspaceX from './Api/getSpaceXLaunches'
 import Update from './Api/getLatestLaunches'
-import './App.scss';
+import './style/App.scss'
 import { Switch, BrowserRouter, Route } from 'react-router-dom'
 import Launchpad from './Components/Lunchpad'
 class App extends Component  {
@@ -23,7 +23,6 @@ class App extends Component  {
   }
 
   render(){
-    // console.log(this.state.data,"<>>>>Recket")
     return (
       <div className="App">
         <BrowserRouter>

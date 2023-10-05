@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {  Image, List, Icon} from 'semantic-ui-react'
-import '../App.scss'
+import '../style/App.scss'
 
 class RocketList extends Component{
     state={

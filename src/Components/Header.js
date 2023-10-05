@@ -1,7 +1,7 @@
 import React,{Component } from 'react'
 import {Image, Checkbox ,} from 'semantic-ui-react'
 import RefreshB from '../Assets/Refresh Button.png'
-import '../App.scss'
+import '../style/App.scss'
 const Header = ({ landSuccess , getLatest,reused, withReddit})=> {
     return(
         <header>
