@@ -5,6 +5,7 @@
   text-align: center;
   margin: auto;
   width: 60%;
+  background-image: linear-gradient(to bottom, rgba(218, 235, 253, 0.1) 0%, rgba(191, 218, 243, 0.1) 100%), url('../Assets/background.svg');
 
   @include xs {
     width: 80%;
@@ -12,14 +13,12 @@
 }
 
 .launch-container {
-  position: relative;
-  background-image: linear-gradient(to bottom, rgba(218, 235, 253, 0.1) 0%, rgba(191, 218, 243, 0.1) 100%), url('../Assets/background.svg');
+  // position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   max-width: 1400px;
   width: auto;
-  max-height: 1200vh;
   height: auto;
   margin: auto;
   padding-bottom: 30%;

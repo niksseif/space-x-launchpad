@@ -2,7 +2,14 @@ import React,{Component } from 'react'
 import {Image, Checkbox ,} from 'semantic-ui-react'
 import RefreshB from '../Assets/Refresh Button.png'
 import '../style/App.scss'
-const Header = ({ landSuccess , getLatest,reused, withReddit})=> {
+const Header = ({ landSuccess,
+    getLatest,
+    reused,
+    withReddit,
+    isLandSuccess,
+    isReused,
+    isWithReddit})=> {
+    console.log("hello from heather")
     return(
         <header>
             <nav className="top-header" >
@@ -15,7 +22,7 @@ const Header = ({ landSuccess , getLatest,reused, withReddit})=> {
                     >
                 </Image>
                 <div className = 'land-success-container'>
-                    <Checkbox label='Land Success' onClick={landSuccess} />
+                    <Checkbox label='Land Success' onClick={landSuccess}  />
                     <Checkbox label='Reused' onClick={reused} />
                     <Checkbox label='With Reddit' onClick={withReddit} />  
                 </div>       
