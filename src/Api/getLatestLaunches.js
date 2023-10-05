@@ -16,7 +16,6 @@ export default async function getLatest(){
         } else {
             console.error(`Error: ${response.status} ${response.statusText}`);
             const text = await response.text();
-            console.error(text);
             throw new Error(`SpaceX Server error: ${response.status}`);
         }
     } catch (err) {
