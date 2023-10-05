@@ -10,7 +10,6 @@ export default async function getLatest () {
             },
         })
         const body = await response.json();
-        console.log(body,"<>>>>body")
         if (response.status !== 200)
             throw new Error(body.message)
         return body
