@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-
 import {  Image, List, Icon} from 'semantic-ui-react'
-// import { Link } from "react-router-dom";
-// import Shape from '../Assets/link.svg'
-import '../App.scss'
+import '../style/App.scss'
 
 class RocketList extends Component{
-
     state={
         collapse:false,
     }
@@ -20,21 +16,19 @@ class RocketList extends Component{
     renderDetail = (data) =>{
         let collapsed=''
        if (data.length > 10){
-           collapsed = data.substring(0,25)+'...'
-           
-       }
-       
+           collapsed = data.substring(0,25)+'...' 
+       } 
        return collapsed;
     }
 
 render(){
     const {flight } = this.props;
     return (
-        <div className='List-Container'>
-        {(!this.props.flight) ? 'Loading.....':
+        <div className='list-Container'>
+        {(!flight) ? 'Loading.....':
             <div>
-            <List.Item className='list-item' >
-                <Image avatar src={this.props.flight.links.mission_patch}/>
+            <List.Item className='list-item' role="listitem" >
+                <Image avatar src={flight.links.mission_patch} alt="flight"/>
                 <span>{flight.rocket.rocket_name}</span>
                 <span>{flight.rocket.rocket_type}</span>
                 { (flight.launch_date_local) 
@@ -49,10 +43,10 @@ render(){
                     {this.renderDetail(flight.launch_failure_details.reason)} at {flight.launch_failure_details.time} seconds
                     </span>
                     : 
-                    <span>Lorem ipsum dolor sit amet, consectetur ...</span>
+                    <span>detail is not available</span>
                     }
                 <span className="flight-id">{this.props.flight.flight_number}</span>
-               <a href={flight.links.video_link} target='blank'><Icon name='linkify' /></a>
+               <a href={flight.links.video_link} target='blank' aria-label="you-tube video link"><Icon name='linkify' /></a>
             </List.Item>
             </div>
         }
