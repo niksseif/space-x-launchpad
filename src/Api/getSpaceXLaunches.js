@@ -1,5 +1,3 @@
-
-
 //Get first 40 launches from space x launches 
 export default async function getSpaceXLaunches() {
     try {
