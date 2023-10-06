@@ -6,7 +6,7 @@ export default async function getSpaceXLaunches() {
         if (response.status !== 200) throw new Error(body.message)
         return body
     } catch (error) {
-        alert(error.message)
+       return error.message
     }
 }
 

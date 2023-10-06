@@ -5,102 +5,89 @@ import './style/App.scss'
 import { Switch, BrowserRouter, Route } from 'react-router-dom'
 import Launchpad from './Components/Lunchpad'
 import Header from './Components/Header'
+import { Error } from './Components/Error';
+import ErrorBoundary from './Components/ErrorBoundary';
 class App extends Component  {
    state = {
       data: [],
-      landSuccess:[],
-      refresh:false,
-      landSuccess:false,
-      reused:false,
-      reddit:false,
+      filteredData:[],
+      refresh : false,
+      error :"",
+      filters : {
+        landSuccess:false,
+        reused:false,
+        reddit:false,
+      }  
     }
 
   async componentDidMount(){
-      let res = await getspaceX()
+      const res = await getspaceX()
       this.setState({data: res})
     }
 //get the latest after refreshing
   getLatest = async () => {
-    let latest = await Update()
-    this.setState({ data: [latest, ...this.state.data,] })
+   try {
+    const latest = await Update()
+    this.setState({ data: [...this.state.data, latest ] }) 
+   } catch(err) {
+    this.setState({error : true})
+   }
+  }
+  toggleFilter = filterName => {
   
-  }
-  //filter landed success
-  landSuccess = () => {
-    let landed =[]
-    if (this.state.data) {
-        this.state.data.forEach((item) => {
-        let cores =item.rocket.first_stage.cores 
-            cores.filter((idx) => {
-                if (idx.land_success){
-                    landed.push(item)
-                    this.setState({ ...this.state.data, data: landed})
-                }
-            }) 
-            this.handleLandedSuccessToggle();  
-        })
+    this.setState(prevState => ({
+        filters: {
+            ...prevState.filters,
+            [filterName]: !prevState.filters[filterName],
+        },
+    }), this.applyFilters);
+};
+
+applyFilters = () => {
+    const { data, filters } = this.state;
+    let filteredData = data;
+    if (filters.landSuccess) {
+        filteredData = filteredData.filter(item =>
+          item.rocket.first_stage.cores.some(core => {
+            return core.land_success
+          })
+        );
     }
-}
-handleLandedSuccessToggle = () => {
-  this.setState({ landSuccess:!this.state.landSuccess})
-}
-
-
-//toggle reused 
-handleReusedToggle = () =>{
-  this.setState({ reused:!this.state.reused})
-}
-//filter Reused 
-reused = () => {
-  let coreReused =[]
-  if (this.state.data) {
-      this.state.data.forEach((item) => {
-      let cores =item.rocket.first_stage.cores 
-          cores.filter((idx) => {
-              if (idx.reused){
-                  coreReused.push(item)
-              }
-          }) 
-          this.setState({ data: coreReused})
-          this.handleReusedToggle();  
-      })
-  }
-}
-
-//toggle reddit
-handleRedditToggle = () =>{
-  this.setState({ reddit:!this.state.reddit})
-}
-
-//filter With raddit
-withReddit = () =>{ 
-  let withReddit=[]
-  if (this.state.data) {
-      this.state.data.map((item) => {
-          if(item.links && (item.links.reddit_campaign || item.links.reddit_launch || item.links.reddit_recovery || item.links.reddit_media)){
-           withReddit.push(item)
-          }
-          this.setState({ data: withReddit})
-          this.handleRedditToggle();  
-      })
-  }
-}
+    if (filters.reused) {
+        filteredData = filteredData.filter(item =>
+          item.rocket.first_stage.cores.some(core => core.reused)
+        );
+    }
+    if (filters.reddit) {
+        filteredData = filteredData.filter(item =>
+            item.links && (
+                item.links.reddit_campaign ||
+                item.links.reddit_launch ||
+                item.links.reddit_recovery ||
+                item.links.reddit_media
+            )
+        );
+    }
+    this.setState({  filteredData : filteredData });
+};
 
   render(){
     return (
       <div className="App">
         <BrowserRouter>
+        <ErrorBoundary>
         <Header 
-                data={this.state.data}
+                data={this.state.filteredData}
                 refresh={this.state.refresh}
-                landSuccess={this.landSuccess}
-                reused = {this.reused}
-                withReddit = {this.withReddit}
+                toggleFilter={this.toggleFilter}
                 getLatest = {this.getLatest}
                 />
         <Switch>
-            <Route path='/' render= {() => <Launchpad  data = {this.state.data} getLatest={this.getLatest}  /> }/>
+            <Route path='/' render= {() => <Launchpad  data = {this.state.data} filteredData ={this.state.filteredData}getLatest={this.getLatest}  /> }/>
+            <Route path='/error' render={() => <Error error={this.state.error} />} />
+            <Route path="*" render={() => <Error error="Page not found" />} />
           </Switch>
+          </ErrorBoundary>
         </BrowserRouter>
       </div>
     );

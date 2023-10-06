@@ -6,9 +6,9 @@ import { List } from 'semantic-ui-react'
 import '../style/App.scss'
 class launchpad extends Component {
 
-   
     render(){
-        const {data, getLatest } = this.props
+        const {data, getLatest, filteredData } = this.props
+        const dataToUse = filteredData.length > 0 ? filteredData : data;
         return(
             <div className='launch-container'>
                 <main className='flights-container'>
@@ -24,13 +24,7 @@ class launchpad extends Component {
                 </div>
             </section>
                 <List>
-                    {
-                        (this.props.data && !this.props.landSuccess && !this.props.reused && !this.props.reddit )
-                        ? 
-                        this.props.data.map((flight, idx) => <List.Item key={idx}><RocketList flight={flight} key={idx} /></List.Item>)
-                        : 
-                        this.props.data.map((flight, idx) => <List.Item key={idx}><RocketList flight={flight} key={idx} /></List.Item>)
-                    }
+                    {dataToUse.map((flight, idx) => <List.Item key={idx}><RocketList flight={flight} key={idx} /></List.Item>)}
                 </List>
                 </main>
             

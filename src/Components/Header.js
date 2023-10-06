@@ -1,14 +1,9 @@
-import React,{Component } from 'react'
+import React from 'react'
 import {Image, Checkbox ,} from 'semantic-ui-react'
 import RefreshB from '../Assets/Refresh Button.png'
 import '../style/App.scss'
-const Header = ({ landSuccess,
-    getLatest,
-    reused,
-    withReddit,
-    isLandSuccess,
-    isReused,
-    isWithReddit})=> {
+const Header = ({ data, refresh, toggleFilter, getLatest})=> {
+    
     return(
         <header>
             <nav className="top-header" >
@@ -18,13 +13,20 @@ const Header = ({ landSuccess,
                     avatar 
                     src={RefreshB} 
                     onClick={getLatest}
+                    alt="refresh button"
+                    disabled
                     >
                 </Image>
-                <div className = 'land-success-container'>
-                    <Checkbox label='Land Success' onClick={landSuccess}  />
-                    <Checkbox label='Reused' onClick={reused} />
-                    <Checkbox label='With Reddit' onClick={withReddit} />  
-                </div>       
+                  <div className='land-success-container'>
+                    <label htmlFor='landSuccess'>Land Success</label>
+                    <Checkbox id='landSuccess' onClick={() => { toggleFilter("landSuccess") }} />
+
+                    <label htmlFor='reused'>Reused</label>
+                    <Checkbox id='reused' onClick={() => { toggleFilter("reused") }} />
+
+                    <label htmlFor='reddit'>With Reddit</label>
+                    <Checkbox id='reddit' onClick={() => { toggleFilter("reddit") }} />
+                </div>    
             </nav>
             
         </header> 
